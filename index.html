@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amey Malhotra - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Timeline line (fixed on left side) -->
+    <div class="timeline-line"></div>
+    
+    <!-- Timeline line (fixed on right side, upside down) -->
+    <div class="timeline-line timeline-line-right"></div>
+    
+    <!-- Horizontal scroll container -->
+    <div class="horizontal-scroll-container" id="scrollContainer">
+        <!-- Hero Section -->
+        <div class="hero-container portfolio-section" id="hero">
+            <div id="textContainer" class="text-container"></div>
+            <div class="timeline-marker" data-section="hero"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="hero"></div>
+        </div>
+        
+        <!-- About Section -->
+        <section class="portfolio-section" id="about" data-section="about">
+            <div class="section-content">
+                <h2 class="section-title">About</h2>
+                <div class="section-body">
+                    <p>Your bio and introduction text will go here.</p>
+                </div>
+            </div>
+            <div class="timeline-marker" data-section="about"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="about"></div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="portfolio-section" id="experience" data-section="experience">
+            <div class="section-content">
+                <h2 class="section-title">Experience</h2>
+                <div class="section-body">
+                    <p>Your work experience timeline will go here.</p>
+                </div>
+            </div>
+            <div class="timeline-marker" data-section="experience"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="experience"></div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section class="portfolio-section" id="projects" data-section="projects">
+            <div class="section-content">
+                <h2 class="section-title">Projects</h2>
+                <div class="section-body">
+                    <p>Your projects showcase will go here.</p>
+                </div>
+            </div>
+            <div class="timeline-marker" data-section="projects"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="projects"></div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="portfolio-section" id="skills" data-section="skills">
+            <div class="section-content">
+                <h2 class="section-title">Skills</h2>
+                <div class="section-body">
+                    <p>Your skills and technologies will go here.</p>
+                </div>
+            </div>
+            <div class="timeline-marker" data-section="skills"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="skills"></div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="portfolio-section" id="contact" data-section="contact">
+            <div class="section-content">
+                <h2 class="section-title">Contact</h2>
+                <div class="section-body">
+                    <p>Your contact information will go here.</p>
+                </div>
+            </div>
+            <div class="timeline-marker" data-section="contact"></div>
+            <div class="timeline-marker timeline-marker-right" data-section="contact"></div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
