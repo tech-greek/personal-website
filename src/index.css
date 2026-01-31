@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-white text-black dark:bg-[#1e1e1e] dark:text-white font-sans antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+      sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  * {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .cursor-blink {
+    animation: blink 1.24s infinite;
+  }
+
+  @keyframes blink {
+    0%, 49% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .letter-appear {
+    opacity: 0;
+    transform: translateY(0.1em);
+    animation: letter-appear 0.99s ease forwards;
+  }
+
+  .animate-bounce {
+    animation-duration: 1.24s;
+  }
+
+  @keyframes letter-appear {
+    from {
+      opacity: 0;
+      transform: translateY(0.1em);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
