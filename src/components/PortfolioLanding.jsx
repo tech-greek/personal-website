@@ -9,10 +9,11 @@ const FIELD_DEPTH = 600
 export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
   const containerRef = useRef(null)
   const mouseRef = useRef(new THREE.Vector2(0, 0))
+  const scrollRef = useRef(0)
 
   useEffect(() => {
     const isDark = theme === 'dark'
-    const backgroundColor = isDark ? 0x0a0a0a : 0xffffff
+    const backgroundColor = isDark ? 0x000000 : 0xffffff
     const pointColor = isDark ? 0x60a5fa : 0x2563eb
 
     const scene = new THREE.Scene()
@@ -73,7 +74,12 @@ export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
       mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1
     }
 
+    const handleScroll = () => {
+      scrollRef.current = window.scrollY || 0
+    }
+
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
     let time = 0
     let animationId
@@ -162,6 +168,9 @@ export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
       camera.position.y += (targetY - camera.position.y) * 0.024255
       camera.lookAt(0, 0, 0)
 
+      const fadeProgress = Math.min(1, scrollRef.current / window.innerHeight)
+      material.opacity = 0.8 * (1 - fadeProgress)
+
       renderer.render(scene, camera)
     }
 
@@ -178,6 +187,7 @@ export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
       if (animationId) cancelAnimationFrame(animationId)
       containerRef.current?.removeChild(renderer.domElement)
@@ -190,11 +200,6 @@ export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
   const textColor = theme === 'dark' ? 'text-white' : 'text-black'
   const subTextColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
   const scrollColor = theme === 'dark' ? 'text-cyan-400' : 'text-blue-500'
-  const toggleStyles =
-    theme === 'dark'
-      ? 'bg-white/10 text-white hover:bg-white/20'
-      : 'bg-black/5 text-black hover:bg-black/10'
-
   const backgroundClass = theme === 'dark' ? 'bg-black' : 'bg-white'
 
   const headingText = 'Hi, I am Amey'
@@ -207,14 +212,6 @@ export default function PortfolioLanding({ theme = 'light', onToggleTheme }) {
     <div className={`relative w-full h-screen overflow-hidden ${backgroundClass}`}>
       {/* Three.js canvas container */}
       <div ref={containerRef} className="absolute top-0 left-0 w-full h-full" />
-
-      <button
-        type="button"
-        onClick={onToggleTheme}
-        className={`absolute top-6 right-6 z-20 px-4 py-2 rounded-full text-sm transition-colors ${toggleStyles}`}
-      >
-        {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-      </button>
 
       {/* Center content */}
       <div className="relative z-10 flex items-center justify-center h-full pointer-events-none">
