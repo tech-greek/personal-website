@@ -4,21 +4,20 @@
 
 @layer base {
   html, body {
-    @apply bg-white text-black dark:bg-[#1e1e1e] dark:text-white font-sans antialiased;
+    @apply bg-white text-black dark:bg-black dark:text-white font-sans antialiased;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
       sans-serif;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    min-height: 100%;
     width: 100%;
   }
 
   #root {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
-    overflow: hidden;
   }
 
   * {
@@ -60,4 +59,15 @@
       transform: translateY(0);
     }
   }
+
+  .reveal-section .reveal-highlight {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  .reveal-section.in-view .reveal-highlight {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
