@@ -56,7 +56,8 @@ const NEXT_SLOTS = ['farLeft', 'offLeft', 'left', 'center', 'right']
 const PREV_SLOTS = ['left', 'center', 'right', 'offRight', 'farRight']
 
 export default function ProjectsSection({ theme }) {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const initialCenterIndex = projects.findIndex((p) => p.name === 'Climate Resilience Decision Dashboard')
+  const [activeIndex, setActiveIndex] = useState(initialCenterIndex >= 0 ? initialCenterIndex : 0)
   const [slotPositions, setSlotPositions] = useState(REST_SLOTS)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [noTransition, setNoTransition] = useState(false)
